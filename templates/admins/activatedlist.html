@@ -1,0 +1,112 @@
+{% extends 'admins/adminbase.html' %}
+{% block contents %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body{
+            background: linear-gradient(45deg,rgb(240, 172, 172),rgb(191, 148, 243));
+            height:100vh;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        .content {
+            width: 900px;
+            margin-right:1050px;
+        }
+
+        .alert {
+            display: none;
+        }
+
+        .message-item {
+            color: red;
+            border: 2px solid red;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content"><br><br>
+        <h2 class="text-center">User List</h2>
+        <div id="message-container">
+            {% for m in messages %}
+            <h5 style="color: rgb(2, 148, 46);">{{ m.message }}</h5>
+            {% endfor %}
+        </div>
+        <br><br><br>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.phonenumber }}</td>
+                                <td>
+                                    {% if user.is_active %}
+                                        Activated |
+                                        <a href="{% url 'blockuser' user.pk %}" class="btn btn-danger btn-sm">Block</a>
+                                    {% else %}
+                                        <a href="{% url 'useractivate' user.pk %}" class="btn btn-primary btn-sm">Activate</a>  
+                                       
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function removeMessages() {
+            const messageContainer = document.getElementById('message-container');
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 2000);
+        }
+
+        // Run the removeMessages function after the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            removeMessages();
+        });
+    </script>
+
+</body>
+
+</html>
+
+{% endblock %}

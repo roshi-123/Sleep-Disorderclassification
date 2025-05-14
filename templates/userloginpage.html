@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body{
+            background:url('https://png.pngtree.com/thumb_back/fh260/background/20210728/pngtree-creative-colorful-bokeh-light-blur-background-image_753190.jpg') no-repeat center center;
+            background-size:cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+           
+        }
+        .content {
+            width: 700px;
+            margin-left:380px;
+            
+            
+        }
+        label{
+            color:darkviolet;
+            margin-right:450px;
+        }
+        .alert {
+            display: none;
+        }
+        .btn-primary {
+            background:rgb(77, 235, 82); /* Green */
+            border: none;
+            border-radius: 25px; /* Rounded button */
+            width: 120px;
+            padding: 10px;
+            font-size: 18px;
+            transition: 0.3s;
+            display: block; /* Makes button take full width */
+            margin: 20px auto; /* Centers the button horizontally */
+            text-align: center;
+            margin-bottom:2px;
+        }
+        .btn-primary:hover {
+            background:rgb(81, 26, 159); /* Darker green on hover */
+        }
+
+        .message-item {
+            color: red;
+            border: 2px solid red;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+        form-control{
+            border-radius:100px;
+        }
+        .content .text-center{
+            font-size:40px;
+            color:white;
+            margin-left:50px;
+        }
+        .content .text-centers{
+            font-size:20px;
+            color:darkviolet;
+            margin-left:50px;
+        }
+        label {
+            font-size:18px;
+            margin-right:500px;
+            color: darkviolet; /* Change to desired color */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"><br><br>
+        <h2 class="text-center">User Login</h2>
+        <div id="message-container">
+            {% for m in messages %}
+                <h5 style="color: red;">{{ m.message }}</h5>
+            {% endfor %}
+        </div>
+        <br><br>
+        <div class="card shadow">
+            <div class="card-body">
+                <form id="loginForm" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+                        <div class="invalid-feedback">
+                            Please enter your username.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>3
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                        <div class="invalid-feedback">
+                            Please enter your password.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+           
+                <div class="text-centers mt-3">
+                    <p>Don't have an account? <a href="{% url 'userregister' %}" style="color: #4CAF50; text-decoration: none;font-size:20px;">Register here</a></p>
+                </div>
+               
+           
+        </div>
+    </div>
+    
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+<script>
+        function removeMessages() {
+            const messageContainer = document.getElementById('message-container');
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        // Run the removeMessages function after the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            removeMessages();
+        });
+</script>
+
+</body>
+</html>
+
+
+{% endblock %}

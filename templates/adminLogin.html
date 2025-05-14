@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block contents %}
+<style>
+    .content {
+        width:600px;
+        margin-left:380px;
+    }
+    .content .text-center{
+        color:darkviolet;
+    }
+    label{
+        color:darkviolet;
+        margin-right:400px;
+    }
+    .btn-primary {
+        background:rgb(60, 84, 202); /* Green */
+        border: none;
+        border-radius: 25px; /* Rounded button */
+        width: 120px;
+        padding: 10px;
+        font-size: 18px;
+        transition: 0.3s;
+        display: block; /* Makes button take full width */
+        margin: 20px auto; /* Centers the button horizontally */
+        text-align: center;
+    }
+    
+    
+    .btn-primary:hover {
+        background:rgb(162, 154, 255);
+    }
+</style>
+<div class="content"><br><br>
+    <h2 class="text-center"> Admin Login</h2>
+    {% if error_message %}
+    <div class="alert alert-danger">
+        {{ error_message }}
+    </div>
+    {% endif %}
+    <br><br>
+    <div class="card shadow">
+        <div class="card-body">
+            <form id="loginForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+                    <div class="invalid-feedback">
+                        Please enter your username.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                    <div class="invalid-feedback">
+                        Please enter your password.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

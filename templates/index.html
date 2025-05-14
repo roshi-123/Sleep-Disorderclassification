@@ -1,0 +1,351 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<!-- Bootstrap CDN -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    /* Background Image */
+    body {
+        background: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjk2MC1uaW5nLTMwLmpwZw.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Right slide animation */
+    @keyframes rightslide {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .container1{
+        margin-top:270px;
+        margin-bottom:100px;
+    }
+    /* Styling for the title section */
+    .title-section {
+        text-align: center;
+        padding: 100px 20px;
+        margin: 50px auto;
+        max-width: 4000px;
+    }
+    h1 {
+        font-size: calc(2rem + 2vw);
+        color: blue;
+        animation: rightslide 1.5s ease-in-out;
+        margin-top:150px;
+        margin-bottom:150px;
+        margin-left:10px;
+        width:1200px;
+       
+    }
+
+    /* Icon Cards Section */
+    .icon-cards-section {
+        padding: 50px 0;
+    }
+
+    /* Custom Card Styling */
+    .custom-card {
+        min-height: 200px;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        animation: fadeIn 1.5s ease-in-out;
+        text-align: center;
+    }
+
+    /* Hover effects on card */
+    .custom-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Icon styling */
+    .custom-card i {
+        font-size: 50px;
+        margin-bottom: 15px;
+        color: #007bff;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .custom-card:hover i {
+        color: white;
+        transform: rotate(360deg);
+    }
+    #scrollBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+    #scrollBtn:hover {
+        background-color: #138496;
+    }
+    .about-section {
+        background: rgba(237, 231, 231, 0.7); 
+        padding: 50px;
+        
+        border-radius: 15px;
+        margin-top: 20px;
+        
+    }
+    .container3{
+        padding-left:120px;
+    }
+
+    .container3 h1 {
+        margin-top:10px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    p{
+        margin-left:70px;
+        font-size:large;
+        
+    }
+    .icon {
+        font-size: 50px;
+        margin-bottom: 10px;
+        color: #17a2b8;
+    }
+    .footer {
+        background: #343a40;
+        color: white;
+        text-align: center;
+        padding: 20px ;
+        margin-top: 50px;
+        border-radius:20px;
+        margin-left:105px;
+        margin-bottom:0px;
+    }
+    .contact-container {
+        margin-top:100px;
+        margin-left:500px;
+        background:  rgba(254, 253, 253, 0.7);;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+    .container3 .   col-md-4{
+        margin-top:30px;
+
+    }
+</style>
+
+<div class="container">
+    <!-- Title Section -->
+    <div class="title-section">
+        <h1>Implementing Machine Learning Algorithms for Classification of Sleep Disorders</h1>
+    </div>
+    
+<div class="container1">
+    <!-- Icon Cards Section -->
+    <div class="icon-cards-section">
+        <div class="row">
+            <!-- Data Collection -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Data Collection</h4>
+                    <p>Gathering sleep-related datasets for analysis.</p>
+                </div>
+            </div>
+            
+            <!-- Data Preprocessing -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-filter"></i>
+                    <h4>Data Preprocessing</h4>
+                    <p>Cleaning and preparing the data for training models.</p>
+                </div>
+            </div>
+            
+            <!-- Feature Engineering -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-cogs"></i>
+                    <h4>Feature Engineering</h4>
+                    <p>Extracting useful features from the dataset.</p>
+                </div>
+            </div>
+            
+            <!-- Model Training -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>Model Training</h4>
+                    <p>Applying machine learning algorithms for classification.</p>
+                </div>
+            </div>
+            
+            <!-- Model Evaluation -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Model Evaluation</h4>
+                    <p>Testing model accuracy and performance.</p>
+                </div>
+            </div>
+            
+            <!-- Deployment -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h4>Deployment</h4>
+                    <p>Integrating the trained model into applications.</p>
+                </div>
+            </div>
+            
+            <!-- Future Improvements -->
+            <div class="col-md-4">
+                <div class="custom-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Future Improvements</h4>
+                    <p>Enhancing the model with advanced techniques.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<button id="scrollBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    
+<script>
+    // Show/hide scroll button based on scroll position
+    window.onscroll = function() {
+        let scrollBtn = document.getElementById("scrollBtn");
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            scrollBtn.style.display = "block";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+    };
+    
+    // Function to scroll back to top
+    function scrollToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
+<section id="about">
+<div class="container3">
+    <div class="about-section" name="about">
+        <h1>About Our Project</h1>
+        <p><strong>Project Title:</strong> Implementing Machine Learning Algorithms for Classification of Sleep Disorders</p>
+        <p>Our project focuses on leveraging machine learning techniques to accurately classify various sleep disorders based on physiological and behavioral data. By analyzing sleep patterns, we aim to assist healthcare professionals in early diagnosis and treatment planning.</p>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i class="fas fa-database icon"></i>
+                <h4>Data Collection</h4>
+                <p>Gathering sleep-related datasets for accurate analysis.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-chart-line icon"></i>
+                <h4>Machine Learning Models</h4>
+                <p>Applying AI algorithms to classify sleep disorders efficiently.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-stethoscope icon"></i>
+                <h4>Healthcare Integration</h4>
+                <p>Providing insights to medical professionals for better patient care.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section id="contactus">
+<div class="contact-container">
+    
+    <h2>Contact Us</h2>
+    <p>If you have any questions or feedback about our Sleep Disorder Prediction project, feel free to reach out!</p>
+    
+    <form action="{% url 'contactus' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+</section>
+
+
+<footer class="footer">
+    <p>&copy; 2025 Sleep Disorder Classification Project. All Rights Reserved.</p>
+</footer>
+
+{% endblock %}

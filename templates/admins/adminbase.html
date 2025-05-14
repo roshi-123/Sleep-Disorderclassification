@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Panel</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg,rgb(181, 212, 226),rgb(150, 101, 162));
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color:rgb(64, 67, 71); /* Background color for the sidebar */
+            padding-top: 20px;
+            position: fixed;
+            width: 250px;
+            border-radius:20px;
+        }
+        .sidebar .nav-link {
+            color: #fff; /* Text color for the sidebar links */
+            margin: 10px 0;
+        }
+        .sidebar .nav-link:hover {
+            color: #d4d4d4; /* Hover color for the sidebar links */
+        }
+        .content {
+            margin-left: 270px; /* Adjust this based on the sidebar width */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a class="navbar-brand text-center d-block mb-4" href="#">Sleep Disorders</a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'adminhome' %}">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'activateduser' %}">User-List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'adminlogout'  %}">logout</a>
+            </li>
+        </ul>
+    </div>
+        {% block contents %}
+        {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

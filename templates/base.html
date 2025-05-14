@@ -1,0 +1,161 @@
+ {% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page with Sidebar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+             
+            min-height: 100vh;
+            background: linear-gradient(45deg, rgb(253, 142, 142), rgb(255, 236, 236));
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40; /* Background color for the sidebar */
+            padding-top: 20px;
+            position: fixed;
+            width: 270px;
+            border-radius:25px;
+            padding:30px;
+        }
+        .sidebar .nav-link {
+            color: #fff; /* Text color for the sidebar links */
+            margin: 10px 0;
+        }
+        .sidebar .nav-link:hover {
+            color: #d4d4d4; /* Hover color for the sidebar links */
+        }
+        .content {
+            margin-left: 270px; /* Adjust this based on the sidebar width */
+            padding: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a class="navbar-brand text-center d-block mb-4" href="#">Sleep Disorders</a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'userLogin' %}">User-Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'adminLogin' %}">Admin-Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'userregister' %}">User-Registration</a>
+            </li>
+        </ul>
+    </div>
+        {% block contents %}
+        {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>  {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page with Sidebar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Ensure the body takes up the full height */
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20241013/pngtree-colorful-pastel-gradient-background-texture-in-shades-of-pink-purple-blue-image_16381316.jpg'); /* Replace with your image URL */
+            background-position: center center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent repeating the image */
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background-color:rgb(76, 79, 82);
+            padding-top: 20px;
+            padding-bottom: 20px;
+            position: fixed;
+            width: 300px;
+            border-radius: 25px;
+            padding: 30px;
+            
+        }
+
+        /* Sidebar Buttons */
+        .sidebar .btn-nav {
+            background-color: #6c757d; /* Default gray */
+            color: white;
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            display: block;
+            
+        }
+        .sidebar .brand-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            color:rgb(48, 34, 241);
+            display: block;
+            margin-bottom: 40px;
+        } 
+
+        .sidebar .btn-nav:hover {
+            background-color:rgb(204, 240, 149); /* Gold */
+            color: #343a40;
+            transform: scale(1.05);
+        }
+        
+        .content {
+            margin-left: 180px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <a class="brand-title" href='#' >Sleep Disorders</a>
+        
+        <a href="{% url 'index' %}" class="btn btn-nav">🏠 Home</a>
+        <a href="{% url 'userLogin' %}" class="btn btn-nav">👤 User Login</a>
+        <a href="{% url 'adminLogin' %}" class="btn btn-nav">🔑 Admin Login</a>
+        <a href="{% url 'userregister' %}" class="btn btn-nav">📝 User Registration</a>
+        <a href="#about" class="btn btn-nav">ℹ️About Us</a>
+        <a href="#contactus" class="btn btn-nav">📞 Contact Us</a>
+    </div>
+
+    <div class="content">
+        {% block contents %}
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

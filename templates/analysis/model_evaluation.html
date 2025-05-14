@@ -1,0 +1,84 @@
+{% extends 'users/userhomepage.html' %}
+{% block contents %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation</title>
+    <style>
+         
+        .content {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            width: 1000px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="card">
+            <pre><h1>Model Evaluation</h1></pre>
+            <!-- <p>Accuracy on SVC: <b>{{ accuracy_svc }}</b></p> -->
+            <pre>Accuracy on Random Forest: <b>{{ accuracy_rf }}</b></pre>
+            <!-- <p>Accuracy on KNN: <b>{{ accuracy_knn }}</b></p> -->
+            <pre>Accuracy on Decision Tree: <b>{{ accuracy_dt }}</b></pre>
+
+            <pre> Accuracy on ANN : <b>{{ ANN_ACCURECY }}</b></pre>
+
+            <pre>Accuracy on SVC : <b>{{ accuracy_svc }}</b></pre>
+            <!-- <p>Accuracy on KNN: <b>{{ accuracy_knn }}</b></p> -->
+            <pre>Accuracy on KNN: <b>{{ accuracy_knn }}</b></pre>
+
+    
+            <pre>Classification Reports:</pre>
+            <pre>Random Forest Classifier:</pre>
+            <pre>{{ rf_report }}</pre>
+    
+            <pre>Support Vector Classifier (SVC):</pre>
+            <pre>{{ svc_report }}</pre>
+    
+            <pre>K-Nearest Neighbors Classifier (KNN):</pre>
+            <pre>{{ knn_report }}</pre>
+    
+            <pre>Decision Tree Classifier:</pre>
+            <pre>{{ dt_report }}</pre>
+    
+             
+        </div>
+       </div>
+</body>
+</html>
+
+
+{% endblock %}

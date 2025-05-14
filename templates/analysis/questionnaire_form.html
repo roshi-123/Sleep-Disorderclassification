@@ -1,0 +1,182 @@
+{% extends 'users/userhomepage.html' %}
+{% block contents %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Behavior Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(194, 172, 172, 0.1);
+            margin: auto;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            color: black;
+            margin-top: 10px;
+            text-align: left;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .thank-you {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .thank-you img {
+            width: 50px;
+        }
+        .back-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+   <h2> {{ message }}</h1>
+
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container">
+    <h2>Behavioral Questionnaire</h2>
+    
+    <!-- Form Section -->
+    <form  action="{% url 'save_questionnaire' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{ request.session.id }}" name='id'>
+
+        <label for="wake_freshness">Do you feel fresh after waking up?</label>
+        <select id="wake_freshness" name="wake_freshness" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="wake_frequency">How often do you wake up at night?</label>
+        <select id="wake_frequency" name="wake_frequency" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="rarely">Rarely</option>
+            <option value="sometimes">Sometimes</option>
+            <option value="often">Often</option>
+        </select>
+
+        <label for="stress_level">How often do you feel stressed before bedtime?</label>
+        <select id="stress_level" name="stress_level" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="low">Rarely</option>
+            <option value="moderate">Sometimes</option>
+            <option value="high">Often</option>
+            <option value="extreme">Always</option>
+        </select>
+
+        <label for="stress_management">How do you manage stress?</label>
+        <select id="stress_management" name="stress_management" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="exercise">Exercise</option>
+            <option value="meditation">Meditation</option>
+            <option value="music">Listening to music</option>
+            <option value="none">I don’t manage stress</option>
+        </select>
+
+        <label for="exercise_frequency">How often do you exercise in a week?</label>
+        <select id="exercise_frequency" name="exercise_frequency" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="rarely">Rarely</option>
+            <option value="1-2">1-2 times</option>
+            <option value="3-5">3-5 times</option>
+            <option value="daily">Daily</option>
+        </select>
+
+        <label for="weight_change">Has your weight significantly changed in the past 6 months?</label>
+        <select id="weight_change" name="weight_change" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="device_usage">Do you use electronic devices (phone, laptop, TV) before sleep?</label>
+        <select id="device_usage" name="device_usage" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="caffeine_alcohol">Do you consume caffeine or alcohol before bedtime?</label>
+        <select id="caffeine_alcohol" name="caffeine_alcohol" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="concentration">Do you have difficulty concentrating during the day?</label>
+        <select id="concentration" name="concentration" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="rarely">Rarely</option>
+            <option value="sometimes">Sometimes</option>
+            <option value="often">Often</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+
+</body>
+</html>
+
+{% endblock %}

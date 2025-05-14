@@ -1,0 +1,88 @@
+{% extends 'users/userhomepage.html' %}
+{% block contents %}
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        
+         body{
+         background: linear-gradient(45deg,rgb(232, 200, 221),rgb(202, 161, 214));
+         height:100vh;
+         font-family: 'Comic Sans MS', cursive, sans-serif;
+         color: #fff;
+         /* text-align: center; */
+         padding: 10px;
+         }
+    
+        .content {
+            margin-left:250px;
+            width: 1000px;
+        
+        }         
+        .alert {
+            display: none;
+        }
+
+        .message-item {
+            color: red;
+            border: 2px solid red;R
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2 class="text-center">User Dashboard</h2>
+        <div id="message-container">
+            <!-- {% for m in messages %}
+                <h5 style="color: red;">{{ m.message }}</h5>
+            {% endfor %} -->
+        </div>
+        <br><br>
+        <div class="card shadow">
+            <div class="card-body">
+                <h4 style="font-family: Arial, sans-serif; font-weight: bold; color: #2d005e;">Welcome, <span style="color: red;"><b>{{ name }} </b></span></h4>
+                <hr>
+                <p style="font-family: Arial, sans-serif; font-weight: bold; color: #333;">LoggedIn username is: <span><b style="color: rgb(232, 12, 159);">  {{ username }}</b></span></p> 
+                <p style="font-family: Arial, sans-serif; font-weight: bold; color: #333;">LoggedIn email is: <span><b>💌  {{ email }}</b></span></p>
+                <br><br> 
+                <!-- Add more content here if needed -->
+            </div>
+        </div>
+    </div>
+    
+    
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+<script>
+        function removeMessages() {
+            const messageContainer = document.getElementById('message-container');
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        // Run the removeMessages function after the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            removeMessages();
+        });
+</script>
+
+</body>
+</html>
+
+
+{% endblock %}  

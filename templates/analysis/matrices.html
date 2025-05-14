@@ -1,0 +1,77 @@
+{% extends 'users/userhomepage.html' %}
+{% block contents %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Evaluation</title>
+    <style>
+        .content {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px; /* Gap between items */
+            margin-top: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(239, 85, 85, 0.2);
+            border-radius: 10px;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(8, 241, 8, 0.4);
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="grid-container">
+            <div class="card">
+                <h2>Confusion Matrix for SVC</h2>
+                <img src="{% static 'assets/img/svc.png' %}" alt="Confusion Matrix for SVC">
+            </div>
+            <div class="card">
+                <h2>Confusion Matrix for Random Forest Classifier</h2>
+                <img src="{% static 'rf.png' %}" alt="Confusion Matrix for Random Forest Classifier">
+            </div>
+            <div class="card">
+                <h2>Confusion Matrix for K-Nearest Neighbors Classifier</h2>
+                <img src="{% static 'assets/img/knn.png' %}" alt="Confusion Matrix for K-Nearest Neighbors Classifier">
+            </div>
+            <div class="card">
+                <h2>Confusion Matrix for Decision Tree Classifier</h2>
+                <img src="{% static 'assets/img/dt.png' %}" alt="Confusion Matrix for Decision Tree Classifier">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
